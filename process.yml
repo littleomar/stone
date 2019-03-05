@@ -1,0 +1,5 @@
+apps:
+  - script: ./src/server/index.js
+    name: stone
+    ENV_PRODUCTION:
+      NODE_ENV: production
