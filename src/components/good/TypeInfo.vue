@@ -23,11 +23,11 @@
     },
     async mounted() {
       let typeId = this.$route.params.id
-      this.typeInfo = (await axios.get(`http://127.0.0.1:3000/api/goods/typeInfo?id=${typeId}`)).data[0]
+      this.typeInfo = (await axios.get(`${process.env.API_BASE}/api/goods/typeInfo?id=${typeId}`)).data[0]
     },
     methods: {
       async modify() {
-        await axios.post(`http://127.0.0.1:3000/api/goods/modifyType`,this.typeInfo)
+        await axios.post(`${process.env.API_BASE}/api/goods/modifyType`,this.typeInfo)
         this.$message({
           message: '修改成功',
           type: 'success'

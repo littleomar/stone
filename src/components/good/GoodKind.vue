@@ -49,7 +49,7 @@
     },
     async mounted() {
       let _self = this;
-      let typeRes = (await axios.get('http://127.0.0.1:3000/api/goods/typeInfo')).data;
+      let typeRes = (await axios.get(`${process.env.API_BASE}/api/goods/typeInfo`)).data;
       typeRes.map(type => {
         _self.typeOptions.push({
           value: type.id,
@@ -77,7 +77,7 @@
               _self.goodKindList.splice(index, 1);
             }
           });
-          await axios.delete(`http://127.0.0.1:3000/api/goods/kind/delete?id=${row.id}`)
+          await axios.delete(`${process.env.API_BASE}/api/goods/kind/delete?id=${row.id}`)
           this.$message({
             type: 'success',
             message: '删除成功!'
@@ -92,7 +92,7 @@
       async typeSelected(id) {
         const _self = this
         _self.goodKindList = []
-        let kindRes = (await axios.get(`http://127.0.0.1:3000/api/goods/kind/type?id=${id}`)).data
+        let kindRes = (await axios.get(`${process.env.API_BASE}/api/goods/kind/type?id=${id}`)).data
         kindRes.map(item => {
           let label = ''
           let tempObj = {

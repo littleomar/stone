@@ -82,7 +82,7 @@
     },
     async mounted() {
       let _self = this;
-      let typeRes = (await axios.get('http://127.0.0.1:3000/api/goods/typeInfo')).data;
+      let typeRes = (await axios.get('${process.env.API_BASE}/api/goods/typeInfo')).data;
       typeRes.map(type => {
         _self.typeOptions.push({
           value: type.id,
@@ -102,7 +102,7 @@
       async typeSelected(type,index) {
         const _self = this
         this.formData.goods[index].kindOptions = []
-        let kindRes = (await axios.get(`http://127.0.0.1:3000/api/goods/kind/type?id=${type}`)).data
+        let kindRes = (await axios.get(`${process.env.API_BASE}/api/goods/kind/type?id=${type}`)).data
         kindRes.map(item => {
           let label = ''
           if (item.nickname) {
@@ -151,7 +151,7 @@
             comments: good.comments
           })
         })
-        await axios.post('http://127.0.0.1:3000/api/goods/buy/add',data)
+        await axios.post(`${process.env.API_BASE}/api/goods/buy/add`,data)
         this.formData.goods = []
         this.$message({
           type: 'success',

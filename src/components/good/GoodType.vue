@@ -44,7 +44,7 @@
       }
     },
     async mounted() {
-      this.goodTypeList = (await axios.get('http://127.0.0.1:3000/api/goods/typeInfo')).data
+      this.goodTypeList = (await axios.get(`${process.env.API_BASE}/api/goods/typeInfo`)).data
     },
     methods: {
       handleInfo(index) {
@@ -66,7 +66,7 @@
               _self.goodTypeList.splice(index, 1);
             }
           });
-          await axios.delete(`http://127.0.0.1:3000/api/goods/deleteType?id=${row.id}`)
+          await axios.delete(`${process.env.API_BASE}/api/goods/deleteType?id=${row.id}`)
           this.$message({
             type: 'success',
             message: '删除成功!'

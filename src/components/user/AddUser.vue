@@ -35,7 +35,7 @@
         this.userInfo.telephone.map((item,index)=>{
           if (!item.trim())  this.userInfo.telephone.splice(index,1)
         })
-        await axios.post(`http://127.0.0.1:3000/api/customer/addUser`,this.userInfo)
+        await axios.post(`${process.env.API_BASE}/api/customer/addUser`,this.userInfo)
         this.$message({
           message: '添加用户成功',
           type: 'success'

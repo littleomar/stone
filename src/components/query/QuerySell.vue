@@ -122,7 +122,7 @@
       }
     },
     async mounted() {
-      this.receiptList = (await axios.get('http://127.0.0.1:3000/api/goods/sell/query')).data.receiptList
+      this.receiptList = (await axios.get(`${process.env.API_BASE}/api/goods/sell/query`)).data.receiptList
       this.receiptListReal = this.receiptList
     },
     methods: {
@@ -134,7 +134,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(async () => {
-          await axios.delete(`http://127.0.0.1:3000/api/goods/sell/delete?id=${item.id}`)
+          await axios.delete(`${process.env.API_BASE}/api/goods/sell/delete?id=${item.id}`)
 
           _self.receiptList = _self.receiptList.filter(receipt=>receipt!==item)
           this.$message({

@@ -56,7 +56,7 @@
       }
     },
     async mounted() {
-      let userRes = (await axios.get('http://127.0.0.1:3000/api/customer/info')).data
+      let userRes = (await axios.get(`${process.env.API_BASE}/api/customer/info`)).data
       userRes.map(item=>{
         item.tel = item.telephone.join(' , ')
       })
@@ -82,7 +82,7 @@
               _self.userList.splice(index, 1);
             }
           })
-          await axios.delete(`http://127.0.0.1:3000/api/customer/delete?id=${row.id}`)
+          await axios.delete(`${process.env.API_BASE}/api/customer/delete?id=${row.id}`)
           this.$message({
             type: 'success',
             message: '删除成功!'

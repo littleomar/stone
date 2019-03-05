@@ -34,7 +34,7 @@
     },
     async mounted() {
       let _self = this;
-      let typeRes = (await axios.get('http://127.0.0.1:3000/api/goods/typeInfo')).data;
+      let typeRes = (await axios.get(`${process.env.API_BASE}/api/goods/typeInfo`)).data;
       typeRes.map(type => {
         _self.typeOptions.push({
           value: type.id,
@@ -44,7 +44,7 @@
     },
     methods: {
       async addKind() {
-        await axios.post('http://127.0.0.1:3000/api/goods/kind/add',this.kindInfo)
+        await axios.post(`${process.env.API_BASE}/api/goods/kind/add`,this.kindInfo)
         this.$message({
           type: 'success',
           message: '添加成功'

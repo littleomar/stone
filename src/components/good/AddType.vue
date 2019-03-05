@@ -23,7 +23,7 @@
     },
     methods: {
       async addType() {
-        await axios.post(`http://127.0.0.1:3000/api/goods/addType`,this.typeInfo)
+        await axios.post(`${process.env.API_BASE}/api/goods/addType`,this.typeInfo)
         this.$message({
           message: '添加用户成功',
           type: 'success'

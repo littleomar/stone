@@ -143,7 +143,7 @@
       }
     },
     async mounted() {
-      this.userArr = (await axios.get('http://127.0.0.1:3000/api/goods/sell/user')).data.userArr
+      this.userArr = (await axios.get(`${process.env.API_BASE}/api/goods/sell/user`)).data.userArr
     },
     methods: {
       querySearch(queryString,cb) {
@@ -152,7 +152,7 @@
         cb(results);
       },
       async userSelected(value) {
-        this.receiptList = (await axios.post('http://127.0.0.1:3000/api/goods/sell/goodlist',{manifestArr:value.manifestArr})).data.receiptList
+        this.receiptList = (await axios.post(`${process.env.API_BASE}/api/goods/sell/goodlist`,{manifestArr:value.manifestArr})).data.receiptList
       },
       dateSelected(date) {
       },

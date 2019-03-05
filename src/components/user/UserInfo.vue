@@ -32,7 +32,7 @@
     },
     async mounted() {
       let userId = this.$route.params.id
-      this.userInfo = (await axios.get(`http://127.0.0.1:3000/api/customer/info?id=${userId}`)).data[0]
+      this.userInfo = (await axios.get(`${process.env.API_BASE}/api/customer/info?id=${userId}`)).data[0]
     },
     methods: {
       async modify() {
@@ -43,7 +43,7 @@
         this.userInfo.telephone.filter(tel=>{
           return tel.toString().trim()
         })
-        await axios.post(`http://127.0.0.1:3000/api/customer/modify`,this.userInfo)
+        await axios.post(`${process.env.API_BASE}/api/customer/modify`,this.userInfo)
         this.$message({
           message: '修改成功',
           type: 'success'

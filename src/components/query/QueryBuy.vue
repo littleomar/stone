@@ -78,7 +78,7 @@
     },
     async mounted() {
       const _self = this
-      let buyGoodRes = (await axios.get('http://127.0.0.1:3000/api/goods/buy/query')).data
+      let buyGoodRes = (await axios.get(`${process.env.API_BASE}/api/goods/buy/query`)).data
       buyGoodRes.dateArr.map( date =>{
         _self.dateOptions.push({
           label: date,
@@ -116,7 +116,7 @@
           })
 
           this.goodListReal = this.goodList
-          await axios.delete(`http://127.0.0.1:3000/api/goods/buy/delete?id=${good.id}`)
+          await axios.delete(`${process.env.API_BASE}/api/goods/buy/delete?id=${good.id}`)
           this.$message({
             type: 'success',
             message: '删除成功!'

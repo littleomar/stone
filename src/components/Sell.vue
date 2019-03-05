@@ -182,7 +182,7 @@
       async mounted() {
 
 
-        let userRes = (await axios.get('http://127.0.0.1:3000/api/customer/info')).data;
+        let userRes = (await axios.get('${process.env.API_BASE}/api/customer/info')).data;
         userRes.map(item=>{
           item.value = item.username
           delete item.username
@@ -192,7 +192,7 @@
 
 
         const _self = this;
-        let typeRes = (await axios.get('http://127.0.0.1:3000/api/goods/typeInfo')).data;
+        let typeRes = (await axios.get('${process.env.API_BASE}/api/goods/typeInfo')).data;
         typeRes.map(type => {
           _self.typeOptions.push({
             value: type.id,
@@ -252,7 +252,7 @@
           })
 
           this.goods[index].kindOptions = []
-          let kindRes = (await axios.get(`http://127.0.0.1:3000/api/goods/kind/type?id=${type}`)).data
+          let kindRes = (await axios.get(`${process.env.API_BASE}/api/goods/kind/type?id=${type}`)).data
           kindRes.map(item => {
             let label = ''
             if (item.nickname) {
@@ -300,7 +300,7 @@
           })
 
 
-          await axios.post('http://127.0.0.1:3000/api/goods/sell/add',data)
+          await axios.post(`${process.env.API_BASE}/api/goods/sell/add`,data)
           this.resetForm()
         },
         dateFtt(fmt,date) { //author: meizz
