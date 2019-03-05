@@ -71,7 +71,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.API_BASE': '"http://127.0.0.1:3000"'
     })
-  ]
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
